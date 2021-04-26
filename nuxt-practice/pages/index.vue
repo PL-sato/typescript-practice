@@ -3,34 +3,53 @@
     <div>
       <Logo />
       <h1 class="title">
-        nuxt-practice
+        {{title}}
       </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+      <h2 class="subtitle">
+        {{subtitle}}
+      </h2>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import {Context} from '@nuxt/types';
+// import {Context} from '@nuxt/vue-app';
+// import AppArticle from '../components/AppArticle.vue';
+interface Data {
+  title: string;
+}
+interface AsyncData {
+  article: {
+    created_at: string;
+    title: string;
+    author: string;
+    body: string;
+  }
+}
 
-export default Vue.extend({})
+export default Vue.extend({
+  components: {
+    // AppArticle
+  },
+  data(): Data {
+    return {
+      title: 'Nuxt x Typescript'
+    }
+  },
+  async asyncData({query, $axios}: Context): Promise<AsyncData> {
+    const {data} = await $axios.get<ArticleData>(
+      `/api/article/${query.page} || 0`
+    )
+    return {article: data.article}
+  }
+  // computed: {
+  //   subtitle(): string {
+  //     return `${this.title} is My astonishing Nuxt.js project`;
+  //   }
+  // }
+})
 </script>
 
 <style>
