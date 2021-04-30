@@ -6,11 +6,13 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "clear-cache": "rm -rf node_modules/.cache/"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.1",
     "core-js": "^3.9.1",
+    "express": "^4.17.1",
     "nuxt": "^2.15.4",
     "nuxt-property-decorator": "^2.9.1"
   },

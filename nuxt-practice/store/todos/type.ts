@@ -27,5 +27,5 @@ export interface A {
 }
 
 export interface RA {
-  'counter/asyncTodos': A['asyncTodos']
+  'todos/asyncTodos': A['asyncTodos']
 }

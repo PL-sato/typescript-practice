@@ -56,5 +56,4 @@ declare module 'vuex' {
     RootGetters,
     RootMutations
   >
-
 }
