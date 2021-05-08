@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <h2>{{message}}</h2>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -30,13 +31,36 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue, {PropType} from 'vue';
 
 export default Vue.extend({
   name: 'HelloWorld',
   props: {
+    obj: {
+      type: Object as PropType<{name: string}>,
+      required: true
+    },
+    arr: {
+      type: Array as PropType<{task: string}[]>
+    },
     msg: String,
+    value: [String, Number],
+    requiredValue: {
+      type: [Number, String],
+      required: true
+    }
   },
+  computed: {
+    message(): string {
+      return this.msg;
+    },
+    myName(): string {
+      return this.obj.name;
+    },
+    myFirstTask(): string {
+      return this.arr[0].task;
+    }
+  }
 });
 </script>
 

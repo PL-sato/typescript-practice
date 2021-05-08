@@ -10,6 +10,7 @@
     "clear-cache": "rm -rf node_modules/.cache/"
   },
   "dependencies": {
+    "@nuxt/typescript": "^2.8.1",
     "@nuxtjs/axios": "^5.13.1",
     "core-js": "^3.9.1",
     "express": "^4.17.1",
